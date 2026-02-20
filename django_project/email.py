@@ -31,4 +31,4 @@ class EmailService:
         )
 
         email.attach_alternative(html_content, "text/html")
-        email.send()s
+        email.send()
