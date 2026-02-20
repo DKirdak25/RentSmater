@@ -17,8 +17,10 @@ class SignUpView(CreateView):
 				success_url = reverse_lazy("dashboard")
 				
 				def form_valid(self, form):
+								print("Before save")
 								response = super().form_valid(form)
 								login(self.request, self.object)
+								print("After save")
 								return redirect("dashboard")
 								
                
