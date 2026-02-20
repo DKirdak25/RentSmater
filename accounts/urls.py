@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MyProfile, HomeView, SignUpView,EmailSentView, VerifyEmailView, LoginView, ProfileUpdateView,DashboardView
+from .views import MyProfile, HomeView, SignUpView,LoginView, ProfileUpdateView,DashboardView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -9,7 +9,5 @@ urlpatterns = [
     path("dashboard/", DashboardView.as_view(), name="dashboard"),
     path("login/", LoginView.as_view(), name="login" ),
     path("signup/", SignUpView.as_view(), name="signup"),
-    path("email-sent/", EmailSentView.as_view(), name="email_sent"  ),
-    path("verify/<uidb64>/<token>/", VerifyEmailView.as_view(), name="verify_email"),    
     path("", HomeView.as_view(), name="home")
 ]
