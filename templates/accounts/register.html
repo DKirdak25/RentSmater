@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Sign Up – EasyBoard Early Access{% endblock %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Optional logo / platform name -->
+      <div class="text-center mb-4">
+        <div class="brand-icon mb-2">🏠🔑</div>
+        <h2 class="fw-semibold" style="color: #0f2b40;">EasyBoard</h2>
+        <p class="text-secondary-custom">Create your account and get early access</p>
+      </div>
+
+      <!-- Sign-up Card -->
+      <div class="card shadow-sm p-4 signup-card mx-auto">
+        <div class="text-center mb-3">
+          <h3 class="h4 fw-semibold">Create Your Account</h3>
+          <p class="text-secondary-custom small">Join early access and manage your profile before launch.</p>
+        </div>
+
+        <!-- Form with Django and widget_tweaks -->
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <!-- Non-field errors (e.g., password mismatch) -->
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger py-2" role="alert">
+              {% for error in form.non_field_errors %}
+                <p class="mb-0 small">{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Username field -->
+          <div class="mb-3">
+            <label for="{{ form.username.id_for_label }}" class="form-label fw-medium">Username</label>
+            {% render_field form.username class="form-control" placeholder="Choose a username" %}
+            {% if form.username.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.username.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Email field -->
+          <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label fw-medium">Email address</label>
+            {% render_field form.email class="form-control" placeholder="you@example.com" %}
+            {% if form.email.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.email.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Password field -->
+          <div class="mb-3">
+            <label for="{{ form.password1.id_for_label }}" class="form-label fw-medium">Password</label>
+            {% render_field form.password1 class="form-control" placeholder="Create a password" %}
+            {% if form.password1.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.password1.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Confirm Password field -->
+          <div class="mb-3">
+            <label for="{{ form.password2.id_for_label }}" class="form-label fw-medium">Confirm password</label>
+            {% render_field form.password2 class="form-control" placeholder="Re-enter password" %}
+            {% if form.password2.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.password2.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Sign Up button (full-width, primary) -->
+          <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Sign Up</button>
+        </form>
+
+        <!-- Link to login for existing users -->
+        <p class="text-center mt-4 mb-2">
+          Already have an account? <a href="{% url 'login' %}" class="text-decoration-none fw-medium">Login here</a>
+        </p>
+
+        <!-- Pre-launch reminder -->
+        <p class="text-center text-secondary-custom small mt-3 mb-0">
+          <i class="bi bi-info-circle me-1"></i>Your account is ready for early access. More features coming soon!
+        </p>
+      </div>
+
+      <!-- Optional extra spacing -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Any page-specific JS (e.g., password strength) can go here -->
+{% endblock %}

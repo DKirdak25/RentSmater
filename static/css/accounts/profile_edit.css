@@ -1,0 +1,35 @@
+.profile-avatar-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+.profile-card {
+    max-width: 600px;
+    border: none;
+    border-radius: 1.2rem;
+}
+
+/* Hide the file input but style its label */
+.file-input-label {
+    display: inline-block;
+    background-color: #e9f0f9;
+    color: #1e4f8a;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.file-input-label:hover {
+    background-color: #d0e2f2;
+}
+
+#id_photo {
+    display: none;
+}

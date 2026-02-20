@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Profile – EasyBoard Early Access{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts/profile_edit.css' %}">
+{% endblock %}
+
+{% block content %}
+<header>
+    <div class="nav-left">
+        <h1>EasyBoard</h1>
+    </div>
+
+    <div class="nav-right">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        <a href="{% url 'profile' %}">Profile</a>
+    </div>
+</header>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <!-- Edit Profile Card -->
+            <div class="card shadow-sm p-4 profile-card mx-auto">
+                <div class="text-center mb-4">
+                    <h3 class="fw-semibold" style="color: #0f2b40;">Edit Profile</h3>
+                    <p class="text-secondary-custom small">
+                        Update your photo and personal details.
+                    </p>
+                </div>
+
+                <form method="post" enctype="multipart/form-data" id="profileEditForm">
+                    {% csrf_token %}
+
+                    <!-- Profile Photo Preview & Upload -->
+                    <div class="text-center mb-4">
+                        <div class="d-flex flex-column align-items-center">
+
+                            {% if user.profile.photo %}
+                                <img
+                                    id="preview"
+                                    class="rounded-circle profile-avatar-preview mb-2"
+                                    src="{{ user.profile.photo.url }}"
+                                    alt="Profile preview"
+                                    loading="lazy"
+                                />
+                            {% else %}
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center profile-avatar-preview mb-2">
+                                    <i class="bi bi-person-fill" style="font-size: 3rem; color: #1e4f8a;"></i>
+                                </div>
+                            {% endif %}
+
+                            <!-- Hidden file input -->
+                            <input type="file" id="id_photo" name="photo" accept="image/*" style="display:none">
+
+                            <!-- Label as clickable button -->
+                            <label for="id_photo" class="file-input-label mt-2">
+                                <i class="bi bi-camera me-1"></i>Change photo
+                            </label>
+
+                            <!-- Photo field errors -->
+                            {% if form.photo.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.photo.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <!-- Read-only Username -->
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Username</label>
+                        <input type="text" class="form-control bg-light" value="{{ user.username }}" readonly disabled>
+                    </div>
+
+                    <!-- Read-only Email -->
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Email address</label>
+                        <input type="email" class="form-control bg-light" value="{{ user.email }}" readonly disabled>
+                    </div>
+
+                    <!-- Birth Date -->
+                    <div class="mb-3">
+                        <label for="{{ form.birth_date.id_for_label }}" class="form-label fw-medium">Birth date</label>
+                        {% render_field form.birth_date class="form-control" type="date" %}
+                        {% if form.birth_date.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.birth_date.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="mb-4">
+                        <label for="{{ form.bio.id_for_label }}" class="form-label fw-medium">Bio</label>
+                        {% render_field form.bio class="form-control" rows="3" placeholder="Tell us a little about yourself..." %}
+                        {% if form.bio.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.bio.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Save Button (full-width) -->
+                    <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Save Changes</button>
+
+                    <!-- Cancel / Back link -->
+                    <p class="text-center mb-0">
+                        <a href="{% url 'profile' %}" class="text-decoration-none">← Back to profile</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Pre‑launch note -->
+            <p class="text-center text-secondary-custom small mt-4">
+                <i class="bi bi-info-circle me-1"></i>
+                Your profile updates are saved in early access. More customization options coming soon.
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

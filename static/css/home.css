@@ -1,0 +1,27 @@
+/* Page-specific subtle gradient for hero */
+.hero-gradient {
+  background: linear-gradient(145deg, #ffffff 0%, #f2f7ff 100%);
+  border-radius: 2rem;
+}
+
+/* Optional extra spacing */
+.step-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #e9f0f9;
+  color: #1e4f8a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.process-card {
+  background: transparent;
+  border: none;
+}
+.bottom-cta {
+  background-color: #f8fafc;
+}

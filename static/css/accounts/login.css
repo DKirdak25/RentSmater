@@ -1,0 +1,10 @@
+.login-card {
+    max-width: 480px;
+    border: none;
+    border-radius: 1.2rem;
+}
+
+.brand-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+}

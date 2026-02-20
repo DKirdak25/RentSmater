@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile – EasyBoard Early Access{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<header>
+  <div class="nav-left">
+    <h1>EasyBoard</h1>
+  </div>
+  
+  <div class="nav-right">  
+     <form method="post" action="{% url 'logout' %}">
+       {% csrf_token %}
+       <button type="submit">Logout</button>
+      </form>
+      <a href="{% url 'profile' %}">Profile</a>
+  </div>
+</header>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Profile Card -->
+      <div class="card shadow-sm p-4 profile-card mx-auto text-center">
+        <!-- Profile Photo -->
+        <div class="mb-3">
+          {% if user.profile.photo %}
+            <img src="{{ user.profile.photo.url }}" alt="Profile photo" class="rounded-circle profile-avatar" loading="lazy">
+          {% else %}
+            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center profile-avatar-preview">
+              <i class="bi bi-person-fill" style="font-size: 3rem; color: #1e4f8a;"></i>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- User Info -->
+        <h4 class="fw-semibold mb-1" style="color: #0f2b40;">{{ user.profile.user }}</h4>
+        <p class="text-secondary-custom mb-2">{{ user.email}}</p>
+
+        {% if user.profile.birth_date %}
+          <p class="mb-2"><span class="text-secondary-custom">Born:</span> {{ user.profile.birth_date|date:"F j, Y" }}</p>
+        {% endif %}
+
+        {% if user.profile.bio %}
+          <p class="mb-3">{{ user.profile.bio }}</p>
+        {% else %}
+          <p class="mb-3 text-secondary-custom fst-italic">No bio yet.</p>
+        {% endif %}
+
+        <!-- Edit Profile Button -->
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'profile_edit' %}" class="btn btn-primary w-50">Edit Profile</a>
+        </div>
+      </div>
+
+      <!-- Pre‑launch note -->
+      <p class="text-center text-secondary-custom small mt-4">
+        <i class="bi bi-info-circle me-1"></i>
+        Your profile is part of early access. More customization options coming soon.
+      </p>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Any page-specific JavaScript can go here -->
+{% endblock %}

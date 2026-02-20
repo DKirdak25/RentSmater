@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Log In – EasyBoard Early Access{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+{% endblock %}
+
+{% block content %}
+   
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <!-- Optional logo / platform name -->
+      <div class="text-center mb-4">
+        <div class="brand-icon mb-2">🏠🔑</div>
+        <h2 class="fw-semibold" style="color: #0f2b40;">EasyBoard</h2>
+        <p class="text-secondary-custom">Log in to access your early access dashboard.</p>
+      </div>
+
+      <!-- Login Card -->
+      <div class="card shadow-sm p-4 login-card mx-auto">
+        <div class="text-center mb-3">
+          <h3 class="h4 fw-semibold">Welcome Back</h3>
+          <p class="text-secondary-custom small">Enter your credentials to continue.</p>
+        </div>
+
+        <!-- Login Form -->
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <!-- Non-field errors (e.g., wrong credentials) -->
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger py-2" role="alert">
+              {% for error in form.non_field_errors %}
+                <p class="mb-0 small">{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Username / Email field (assuming form uses 'username') -->
+          <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label fw-medium">Email </label>
+            {% render_field form.email class="form-control" placeholder="Enter your email" %}
+            {% if form.email.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.email.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Password field -->
+          <div class="mb-3">
+            <label for="{{ form.password.id_for_label }}" class="form-label fw-medium">Password</label>
+            {% render_field form.password class="form-control" placeholder="Enter your password" %}
+            {% if form.password.errors %}
+              <div class="text-danger small mt-1">
+                {% for error in form.password.errors %}{{ error }}{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Login button (full-width, primary) -->
+          <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Log In</button>
+        </form>
+
+        <!-- Link to sign-up for new users -->
+        <p class="text-center mt-4 mb-2">
+          Don’t have an account? <a href="{% url 'signup' %}" class="text-decoration-none fw-medium">Sign Up</a>
+        </p>
+
+        <!-- Pre-launch reminder -->
+        <p class="text-center text-secondary-custom small mt-3 mb-0">
+          <i class="bi bi-info-circle me-1"></i>Welcome to early access! Dashboard features coming soon.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Any page-specific JavaScript (e.g., show/hide password) can go here -->
+{% endblock %}v

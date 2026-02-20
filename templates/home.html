@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}EasyBoard – Early Access{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/accounts/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<header>
+  <div class="nav-left">
+    <h1>EasyBoard</h1>
+  </div>
+  
+  <div class="nav-right">  
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    <a href="{% url 'signup' %}" class="btn btn-outline-primary">Sign Up</a>
+  </div>
+</header>
+
+<!-- 1️⃣ Hero Section -->
+<div class="hero-gradient p-4 p-md-5 mb-5">
+  <div class="container text-center py-4">
+    <!-- Simple emoji illustration (room/key) -->
+    <div class="display-1 mb-3">🏠🔑</div>
+    <h1 class="display-4 fw-semibold" style="color: #0f2b40;">Rent Rooms Smarter – Early Access Open</h1>
+    <p class="lead text-secondary-custom mx-auto" style="max-width: 700px;">
+      Create your account now to manage your profile and join our pre‑launch community.
+    </p>
+    <div class="mt-4 d-flex flex-wrap gap-3 justify-content-center">
+      <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-5 shadow-sm">Sign Up</a>
+      <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-5">Login</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2️⃣ Features / Highlights -->
+<div class="container py-5">
+  <h2 class="text-center fw-semibold mb-5" style="color: #1a3349;">Why join early?</h2>
+  <div class="row g-4">
+    <!-- Secure Account -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4 p-3 text-center">
+        <div class="feature-icon">🔒</div>  <!-- using emoji as icon -->
+        <h3 class="h4 fw-semibold">Secure Account</h3>
+        <p class="text-secondary-custom">All user data is encrypted and stored safely in your profile.</p>
+      </div>
+    </div>
+    <!-- Dashboard Preview -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4 p-3 text-center">
+        <div class="feature-icon">📊</div>
+        <h3 class="h4 fw-semibold">Dashboard Preview</h3>
+        <p class="text-secondary-custom">Check your profile and dashboard before full platform launch.</p>
+      </div>
+    </div>
+    <!-- Early Access -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4 p-3 text-center">
+        <div class="feature-icon">⏳</div>
+        <h3 class="h4 fw-semibold">Early Access</h3>
+        <p class="text-secondary-custom">Be the first to experience the platform when rooms are available.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3️⃣ How It Works (Optional Process Section) -->
+<div class="container py-5">
+  <h2 class="text-center fw-semibold mb-5" style="color: #1a3349;">How it works</h2>
+  <div class="row g-4 text-center">
+    <div class="col-md-4">
+      <div class="process-card">
+        <div class="step-icon mx-auto">1</div>
+        <h3 class="h5 fw-semibold">Sign Up</h3>
+        <p class="text-secondary-custom">Create your account in seconds.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="process-card">
+        <div class="step-icon mx-auto">2</div>
+        <h3 class="h5 fw-semibold">Profile Setup</h3>
+        <p class="text-secondary-custom">Complete your profile details.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="process-card">
+        <div class="step-icon mx-auto">3</div>
+        <h3 class="h5 fw-semibold">Dashboard</h3>
+        <p class="text-secondary-custom">Access your pre‑launch dashboard.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4️⃣ Bottom Call-to-Action -->
+<div class="bottom-cta py-5">
+  <div class="container text-center">
+    <h2 class="display-6 fw-semibold mb-3" style="color: #1a3349;">Get Early Access Now</h2>
+    <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-5">Sign Up</a>
+      <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-5">Login</a>
+    </div>
+    <div class="small-note mx-auto mt-4">
+      <i class="bi bi-info-circle me-1"></i> No payment required. Platform is in pre‑launch mode.
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Any page-specific JavaScript can go here -->
+{% endblock %}

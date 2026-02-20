@@ -1,0 +1,177 @@
+body {
+    background-color: #ffffff;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    color: #1a2e3f; /* base text color */
+}
+
+/* ---------- floating animation keyframes ---------- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes float-soft {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Header styling – matches landing page look */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-left h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #0f2b40;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.nav-right a,
+.nav-right form button {
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-right a:not(.btn) {
+    color: #1e4f8a;
+    padding: 0.4rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-right a:not(.btn):hover {
+    color: #0e3a66;
+    border-bottom-color: #1e4f8a;
+}
+
+.nav-right .btn {
+    padding: 0.5rem 1.8rem;
+    border-radius: 40px;
+    font-weight: 500;
+}
+
+.nav-right .btn-primary {
+    background-color: #1e4f8a;
+    border-color: #1e4f8a;
+    box-shadow: 0 4px 12px rgba(30,79,138,0.2);
+}
+
+.nav-right .btn-primary:hover {
+    background-color: #0e3a66;
+    border-color: #0e3a66;
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 8px 18px rgba(30,79,138,0.3);
+}
+
+.nav-right .btn-outline-primary {
+    color: #1e4f8a;
+    border-color: #1e4f8a;
+    background-color: transparent;
+}
+
+.nav-right .btn-outline-primary:hover {
+    background-color: #e9f0f9;
+    border-color: #1e4f8a;
+    color: #0e3a66;
+    transform: scale(1.02) translateY(-2px);
+}
+
+/* Logout button (form button) styled as outline-secondary */
+.nav-right form button {
+    background: none;
+    border: 1px solid #b6cde0;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    color: #1e4f8a;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.nav-right form button:hover {
+    background-color: #e6f0fa;
+    border-color: #1e4f8a;
+    color: #0e3a66;
+    transform: scale(1.02);
+}
+
+/* Gray secondary text utility */
+.text-secondary-custom {
+    color: #5f6c7a !important;
+}
+
+/* Icon floating (can be used on any page) */
+.feature-icon {
+    font-size: 3rem;
+    color: #1e4f8a;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+    transition: transform 0.25s ease, color 0.2s;
+    animation: float-soft 5s ease-in-out infinite;
+}
+
+/* Small note style (like the pre‑launch note) */
+.small-note {
+    font-size: 0.95rem;
+    color: #5f6c7a;
+    background: #f2f5f8;
+    display: inline-block;
+    padding: 0.5rem 1.8rem;
+    border-radius: 60px;
+    letter-spacing: 0.2px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.small-note:hover {
+    background: #e6ecf3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+/* Container spacing for content (optional, can be overridden) */
+.content-wrapper {
+    padding: 2rem 1.5rem;
+}
+
+/* Footer styling (if used) – you can add later */
+.footer {
+    background-color: #f8fafc;
+    padding: 2.2rem 0;
+    color: #2c3e4f;
+    font-size: 0.95rem;
+}
+
+.footer a {
+    color: #1e4f8a;
+    transition: color 0.2s ease;
+    font-weight: 450;
+}
+
+.footer a:hover {
+    color: #0a2b48;
+}
+
+.footer .bi {
+    font-size: 1.3rem;
+    transition: transform 0.2s;
+}
+
+.footer a:hover .bi {
+    transform: translateY(-2px);
+}

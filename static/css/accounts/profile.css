@@ -1,0 +1,14 @@
+/* Additional fine-tuning for profile */
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.profile-card {
+    max-width: 600px;
+    border: none;
+    border-radius: 1.2rem;
+}
